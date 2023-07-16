@@ -1,0 +1,43 @@
+{
+  "name": "@wwog/css",
+  "version": "0.0.1",
+  "packageManager": "pnpm@8.6.7",
+  "description": "",
+  "author": "wwog",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": "./*"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "build": "pnpm exec tsup",
+    "clean": "node scripts/clean.cjs",
+    "build:tsc": "tsc",
+    "lint": "eslint --ext .ts,.tsx,.js.jsx src",
+    "lint:fix": "eslint --fix --ext .ts,.tsx,.js.jsx src",
+    "type-check": "tsc --noEmit",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.0",
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "prettier": "latest",
+    "typescript": "latest"
+  }
+}

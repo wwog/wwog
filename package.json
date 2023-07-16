@@ -1,0 +1,16 @@
+{
+  "name": "wwog",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "tsup": "^7.1.0",
+    "tsx": "^3.12.7"
+  }
+}
