@@ -5,7 +5,6 @@
   "type": "module",
   "scripts": {
     "dev": "storybook dev -p 6006",
-    "dev:example": "vite",
     "prepare": "panda codegen",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"./**/*.{css,ts,tsx}\"",
@@ -41,6 +40,6 @@
     "prop-types": "^15.8.1",
     "storybook": "^7.0.27",
     "typescript": "^5.0.2",
-    "vite": "^4.4.0"
+    "vite": "^4.4.4"
   }
 }
