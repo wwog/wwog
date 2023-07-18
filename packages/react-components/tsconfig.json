@@ -34,7 +34,7 @@
   },
   "include": [
     "src",
-    "example"
+    "panda.config.ts"
   ],
   "references": [
     {
