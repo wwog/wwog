@@ -1,22 +1,28 @@
 import { CSSLayer, CSSRuleBlock } from '@wwog/css'
 
+interface CSSVariableOption {
+  layerName?: string
+  id?: string
+}
+
 export class CSSVariable {
   public styleElement
 
   protected cssLayer: CSSLayer
   protected ruleBlock: CSSRuleBlock
 
-  private req = false
+  private reqUpdate = false
 
-  constructor() {
-    this.cssLayer = new CSSLayer({
-      name: 'dynamic-css-variable',
-    })
+  constructor(options: CSSVariableOption = {}) {
+    const { id, layerName: name = 'css-variable' } = options
+    this.cssLayer = new CSSLayer({ name })
     this.ruleBlock = new CSSRuleBlock(':root')
     this.cssLayer.addRuleBlock(this.ruleBlock)
     this.styleElement = document.createElement('style')
     this.styleElement.setAttribute('type', 'text/css')
-    this.styleElement.setAttribute('id', 'dynamic-css-variable')
+    if (id) {
+      this.styleElement.setAttribute('id', id)
+    }
     document.head.appendChild(this.styleElement)
   }
 
@@ -48,17 +54,17 @@ export class CSSVariable {
    * 优先考虑单独的`useLayoutEffect`中使用它,内部通过`requestAnimationFrame`在单帧内的多次调用会合并在重绘前与react渲染组件完成后提交更新于同一帧执行。
    * @description_en Style update submitted to the page.
    * If it is called in `useEffect`, you may encounter a lost update because it does not block the browser drawing.
-   * It is preferred to use it in a separate `useLayoutEffect`, and the multiple calls within it through `requestAnimationFrame` 
+   * It is preferred to use it in a separate `useLayoutEffect`, and the multiple calls within it through `requestAnimationFrame`
    * will be merged and submitted for update in the same frame after the react rendering component is completed.
    */
   update() {
     //合并更新任务于下一次重绘前
-    if (this.req) return
-    this.req = true
+    if (this.reqUpdate) return
+    this.reqUpdate = true
 
     requestAnimationFrame(() => {
       this.styleElement.innerHTML = this.cssLayer.valueOf()
-      this.req = false
+      this.reqUpdate = false
     })
   }
 }
