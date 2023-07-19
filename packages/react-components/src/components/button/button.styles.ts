@@ -3,7 +3,6 @@ import { cva } from '@css/css'
 export const buttonRecipes = cva({
   base: {
     fontSize: '14px',
-    bg: 'green.400',
     rounded: 'md',
     color: 'white',
     cursor: 'pointer',
@@ -11,24 +10,24 @@ export const buttonRecipes = cva({
   variants: {
     size: {
       xs: {
-        px: 0.6,
-        py: 0.5,
-      },
-      sm: {
-        px: 1,
-        py: 0.8,
-      },
-      md: {
-        px: 1.4,
+        px: 2,
         py: 1,
       },
+      sm: {
+        px: 3,
+        py: 1.5,
+      },
+      md: {
+        px: 4,
+        py: 2,
+      },
       lg: {
-        px: 1.25,
-        py: 0.625,
+        px: 5,
+        py: 2.5,
       },
       xl: {
-        px: 1.5,
-        py: 0.75,
+        px: 5,
+        py: 3,
       },
     },
   },

@@ -9,6 +9,7 @@ const meta: Meta<typeof ConfigProvider> = {
 function Level() {
   const { id } = useConfigContext()
   const primaryColor = `--primary-color-${id}`
+  console.log(id)
   return (
     <div
       style={{
@@ -22,32 +23,11 @@ function Level() {
 //TempLate
 const Template = () => {
   return (
-    <ConfigProvider
-      config={{
-        id: '001',
-        tokens: {
-          primaryColor: 'red',
-        },
-      }}
-    >
+    <ConfigProvider>
       <Level />
-      <ConfigProvider
-        config={{
-          id: '002',
-          tokens: {
-            primaryColor: 'blue',
-          },
-        }}
-      >
+      <ConfigProvider primaryColor='#DEDA93'>
         <Level />
-        <ConfigProvider
-          config={{
-            id: '003',
-            tokens: {
-              primaryColor: 'green',
-            },
-          }}
-        >
+        <ConfigProvider primaryColor='red'>
           <Level />
         </ConfigProvider>
       </ConfigProvider>
